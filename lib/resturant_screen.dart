@@ -23,14 +23,13 @@ class ResurantScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Iug Resturant"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: mealsModelToWidgetConverter(),
+        appBar: AppBar(
+          title: Text("Iug Resturant"),
         ),
-      ),
-    );
+        body: ListView.builder(
+            itemCount: mealsData.length,
+            itemBuilder: (context, index) {
+              return mealsModelToWidgetConverter()[index];
+            }));
   }
 }

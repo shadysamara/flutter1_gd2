@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/assignemt_solution.dart';
+import 'package:flutter_application_2/full_example/posts_Screen.dart';
 import 'package:flutter_application_2/resturant_screen.dart';
 
 void main() {
@@ -16,7 +18,7 @@ void main() {
       "city": "Palestine"
     }
   ];
-  runApp(MaterialApp(home: ResurantScreen()));
+  runApp(MaterialApp(home: PostsScreen()));
 }
 
 class PostWidget extends StatelessWidget {
