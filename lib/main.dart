@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/assignemt_solution.dart';
+import 'package:flutter_application_2/excersise/post_details_screen.dart';
+import 'package:flutter_application_2/excersise2/views/excersice_screen.dart';
 import 'package:flutter_application_2/full_example/posts_Screen.dart';
+import 'package:flutter_application_2/meal_details/views/meal_details_screen.dart';
 import 'package:flutter_application_2/resturant_screen.dart';
 
 void main() {
@@ -18,7 +21,7 @@ void main() {
       "city": "Palestine"
     }
   ];
-  runApp(MaterialApp(home: PostsScreen()));
+  runApp(MaterialApp(home: ExersiceScreen()));
 }
 
 class PostWidget extends StatelessWidget {

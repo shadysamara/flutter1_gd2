@@ -3,13 +3,21 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/full_example/post_model.dart';
 
-class PostWidget extends StatelessWidget {
+class PostWidget extends StatefulWidget {
   PostModel postModel;
   PostWidget(this.postModel);
+
+  @override
+  State<PostWidget> createState() => _PostWidgetState();
+}
+
+class _PostWidgetState extends State<PostWidget> {
   toggleIsLike() {
-    postModel.isLiked = !(postModel.isLiked ?? false);
+    setState(() {});
+    widget.postModel.isLiked = !(widget.postModel.isLiked ?? false);
   }
 
+  String content = '';
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -27,7 +35,7 @@ class PostWidget extends StatelessWidget {
               toggleIsLike();
             },
             child: Image.network(
-              postModel.image ?? '',
+              widget.postModel.image ?? '',
               height: 180,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -51,14 +59,33 @@ class PostWidget extends StatelessWidget {
                   },
                   child: Icon(
                     Icons.favorite,
-                    color:
-                        (postModel.isLiked ?? false) ? Colors.red : Colors.grey,
+                    color: (widget.postModel.isLiked ?? false)
+                        ? Colors.red
+                        : Colors.grey,
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text(postModel.content ?? ''),
+                Text(widget.postModel.content ?? ''),
+                TextField(
+                  onChanged: (x) {
+                    content = x;
+                  },
+                  decoration: InputDecoration(
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          log(content);
+                        },
+                        child: Icon(
+                          Icons.send,
+                          size: 35,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red, width: 10),
+                          borderRadius: BorderRadius.circular(15))),
+                )
               ],
             ),
           ),

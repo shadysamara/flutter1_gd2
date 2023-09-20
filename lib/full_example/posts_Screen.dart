@@ -5,7 +5,7 @@ import 'package:flutter_application_2/full_example/post_widget.dart';
 
 class PostsScreen extends StatelessWidget {
   List<PostModel> convertMapsToPostmodel() {
-    return postsData.map((e) => PostModel(e)).toList();
+    return postsData.map((e) => PostModel.fromMap(e)).toList();
   }
 
   @override

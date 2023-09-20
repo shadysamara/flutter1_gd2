@@ -3,10 +3,12 @@ class PostModel {
   String? content;
   User? user;
   bool? isLiked;
-  PostModel(Map map) {
+  List<String>? comments;
+  PostModel.fromMap(Map map) {
     image = map["image"];
     content = map["content"];
-    isLiked = map["isFavourite"];
+    isLiked = map["isFavourite"] ?? false;
+    comments = map["comments"] ?? [];
     user = User(map["user"]);
   }
 }
