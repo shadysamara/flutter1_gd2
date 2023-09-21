@@ -1,5 +1,8 @@
 import 'package:flutter_application_2/full_example/post_model.dart';
 
+List<PostModel> postsModelList =
+    postsData.map((e) => PostModel.fromMap(e)).toList();
+
 List<Map> postsData = [
   {
     "image":

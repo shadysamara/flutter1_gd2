@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/assignemt_solution.dart';
+import 'package:flutter_application_2/bnb/bnb_main_screen.dart';
 import 'package:flutter_application_2/excersise/post_details_screen.dart';
 import 'package:flutter_application_2/excersise2/views/excersice_screen.dart';
 import 'package:flutter_application_2/full_example/posts_Screen.dart';
+import 'package:flutter_application_2/full_example/social_home_page.dart';
 import 'package:flutter_application_2/meal_details/views/meal_details_screen.dart';
 import 'package:flutter_application_2/resturant_screen.dart';
 
@@ -21,7 +25,31 @@ void main() {
       "city": "Palestine"
     }
   ];
-  runApp(MaterialApp(home: ExersiceScreen()));
+
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  updateScreen() {
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+        theme: Utilities.isDark ? ThemeData.dark() : ThemeData.light(),
+        home: SocialHomePage(updateScreen));
+  }
+}
+
+class Utilities {
+  static bool isDark = false;
 }
 
 class PostWidget extends StatelessWidget {

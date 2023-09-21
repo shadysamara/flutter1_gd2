@@ -2,7 +2,7 @@ class PostModel {
   String? image;
   String? content;
   User? user;
-  bool? isLiked;
+  bool isLiked = false;
   List<String>? comments;
   PostModel.fromMap(Map map) {
     image = map["image"];

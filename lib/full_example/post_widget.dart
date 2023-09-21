@@ -5,7 +5,9 @@ import 'package:flutter_application_2/full_example/post_model.dart';
 
 class PostWidget extends StatefulWidget {
   PostModel postModel;
-  PostWidget(this.postModel);
+  Function? function;
+
+  PostWidget(this.postModel, [this.function]);
 
   @override
   State<PostWidget> createState() => _PostWidgetState();
@@ -14,7 +16,10 @@ class PostWidget extends StatefulWidget {
 class _PostWidgetState extends State<PostWidget> {
   toggleIsLike() {
     setState(() {});
-    widget.postModel.isLiked = !(widget.postModel.isLiked ?? false);
+    widget.postModel.isLiked = !(widget.postModel.isLiked);
+    if (widget.function != null) {
+      widget.function!();
+    }
   }
 
   String content = '';
