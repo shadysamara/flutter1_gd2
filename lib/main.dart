@@ -8,7 +8,11 @@ import 'package:flutter_application_2/excersise2/views/excersice_screen.dart';
 import 'package:flutter_application_2/full_example/posts_Screen.dart';
 import 'package:flutter_application_2/full_example/social_home_page.dart';
 import 'package:flutter_application_2/meal_details/views/meal_details_screen.dart';
+import 'package:flutter_application_2/navigation/app_router.dart';
+import 'package:flutter_application_2/navigation/nav_provider.dart';
+import 'package:flutter_application_2/navigation/screen1.dart';
 import 'package:flutter_application_2/resturant_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   List<Map> data = [
@@ -42,9 +46,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-        theme: Utilities.isDark ? ThemeData.dark() : ThemeData.light(),
-        home: SocialHomePage(updateScreen));
+    return ChangeNotifierProvider<NavProvider>(
+      create: (context) {
+        return NavProvider();
+      },
+      child: MaterialApp(
+          navigatorKey: AppRouter.navKey,
+          theme: Utilities.isDark ? ThemeData.dark() : ThemeData.light(),
+          home: Screen1()),
+    );
   }
 }
 
