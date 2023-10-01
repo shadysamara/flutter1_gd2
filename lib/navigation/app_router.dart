@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class AppRouter {
   static GlobalKey<NavigatorState> navKey = GlobalKey();
   static goToScreen(Widget screen) {
-    navKey.currentState?.push(MaterialPageRoute(builder: (context) {
+    Navigator.of(navKey.currentContext!)
+        .push(MaterialPageRoute(builder: (context) {
       return screen;
     }));
     // code for navigation to screen
