@@ -5,12 +5,17 @@ import 'package:flutter_application_2/assignemt_solution.dart';
 import 'package:flutter_application_2/bnb/bnb_main_screen.dart';
 import 'package:flutter_application_2/excersise/post_details_screen.dart';
 import 'package:flutter_application_2/excersise2/views/excersice_screen.dart';
+import 'package:flutter_application_2/forms/form_provider.dart';
+import 'package:flutter_application_2/forms/register_screen.dart';
 import 'package:flutter_application_2/full_example/posts_Screen.dart';
 import 'package:flutter_application_2/full_example/social_home_page.dart';
 import 'package:flutter_application_2/meal_details/views/meal_details_screen.dart';
 import 'package:flutter_application_2/navigation/app_router.dart';
 import 'package:flutter_application_2/navigation/nav_provider.dart';
+import 'package:flutter_application_2/navigation/not_found_screen.dart';
+import 'package:flutter_application_2/navigation/pages_names.dart';
 import 'package:flutter_application_2/navigation/screen1.dart';
+import 'package:flutter_application_2/navigation/screen2.dart';
 import 'package:flutter_application_2/resturant_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -46,14 +51,30 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return ChangeNotifierProvider<NavProvider>(
-      create: (context) {
-        return NavProvider();
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<NavProvider>(create: (context) {
+          return NavProvider();
+        }),
+        Provider<FormProvider>(create: (context) {
+          return FormProvider();
+        }),
+      ],
       child: MaterialApp(
-          navigatorKey: AppRouter.navKey,
-          theme: Utilities.isDark ? ThemeData.dark() : ThemeData.light(),
-          home: Screen1()),
+        routes: {
+          PagesNames.screen1: (context) => Screen1(),
+          PagesNames.screen2: (context) => Screen2()
+        },
+        navigatorKey: AppRouter.navKey,
+        theme: Utilities.isDark ? ThemeData.dark() : ThemeData.light(),
+        // initialRoute: PagesNames.screen1,
+        home: RegisterScreen(),
+        onGenerateRoute: (RouteSettings x) {
+          return MaterialPageRoute(builder: (context) {
+            return NotFoundScreen();
+          });
+        },
+      ),
     );
   }
 }

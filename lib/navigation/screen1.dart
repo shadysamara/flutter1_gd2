@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_2/navigation/nav_provider.dart';
+import 'package:flutter_application_2/navigation/pages_names.dart';
 import 'package:flutter_application_2/navigation/screen2.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,10 @@ class Screen1 extends StatelessWidget {
                 child: ElevatedButton(
                   child: Text("Sign In"),
                   onPressed: () {
-                    provider.checkLogin();
+                    Navigator.of(context).pushNamed("second_screen",
+                        arguments: "Hello from Screen1");
+
+                    // provider.checkLogin();
                   },
                 ),
               ),

@@ -5,8 +5,10 @@ import 'package:flutter_application_2/navigation/nav_provider.dart';
 import 'package:provider/provider.dart';
 
 class Screen2 extends StatelessWidget {
+  String? data;
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context)?.settings.arguments.toString();
     return Scaffold(
       appBar: AppBar(
         title: Text("Screen2"),
